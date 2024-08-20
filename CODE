@@ -1,0 +1,44 @@
+#include <iostream> 
+#include <vector> 
+#include <numeric>  // For accumulate 
+Using namespace std; 
+// Function to calculate the CGPA 
+Float calculateCGPA(const vector<float>& grades, const vector<int>& credits) { 
+Float totalGradePoints = 0; 
+Int totalCredits = 0; 
+// Iterate through grades and credits and calculate the total grade points and 
+credits 
+For (size_t i = 0; i < grades.size(); i++) { 
+totalGradePoints += grades[i] * credits[i];  // Grade * Credit 
+totalCredits += credits[i];                  
+} 
+// Sum of all credits 
+// Return CGPA (total grade points / total credits) 
+Return totalGradePoints / totalCredits; 
+} 
+Int main() { 
+Int numCourses; 
+Cout ≪ “Enter the number of courses: “; 
+Cin ≫ numCourses; 
+Vector<float> grades(numCourses);   // Vector to store grades 
+Vector<int> credits(numCourses);    // Vector to store credits 
+// Input grades and credit hours for each course 
+For (int i = 0; i < numCourses; i++) { 
+Cout ≪ “Enter grade for course “ ≪ i + 1 ≪ “: “; 
+Cin ≫ grades[i]; 
+Cout ≪ “Enter credit hours for course “ ≪ i + 1 ≪ “: “; 
+Cin ≫ credits[i]; 
+} 
+// Calculate CGPA 
+Float cgpa = calculateCGPA(grades, credits); 
+// Output individual grades, total credits, and CGPA 
+Cout ≪ “\nCourse Grades and Credits:\n”; 
+For (int i = 0; i < numCourses; i++) { 
+Cout ≪ “Course “ ≪ i + 1 ≪ “: Grade = “ ≪ grades[i] ≪ “, Credits = “ ≪ 
+credits[i] ≪ endl; 
+} 
+Cout ≪ “\nTotal Credits: “ ≪ accumulate(credits.begin(), credits.end(), 0) ≪ 
+endl;  // Fixed: Added <numeric> for accumulate 
+Cout ≪ “CGPA: “ ≪ cgpa ≪ endl; 
+Return 0; 
+} 
